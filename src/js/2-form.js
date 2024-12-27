@@ -7,15 +7,33 @@ let formData = { email: "", message: "" };
 // Посилання на форму
 const form = document.querySelector(".feedback-form");
 
-// 1. **Заповнення форми даними з локального сховища при завантаженні сторінки**
-document.addEventListener("DOMContentLoaded", () => {
-  const savedData = localStorage.getItem(STORAGE_KEY);
-  if (savedData) {
-    formData = JSON.parse(savedData);
-    form.email.value = formData.email || ""; // Заповнення поля email
-    form.message.value = formData.message || ""; // Заповнення поля message
+// 1. **Функція для заповнення полів форми з локального сховища**
+const fillFormFields = () => {
+  try {
+    // Якщо локальне сховище порожнє — виходимо з функції
+    if (!localStorage.getItem(STORAGE_KEY)) {
+      return;
+    }
+
+    // Отримання даних із локального сховища
+    const formDataFromLS = JSON.parse(localStorage.getItem(STORAGE_KEY));
+
+    // Оновлення об'єкта formData
+    formData = formDataFromLS;
+
+    // Заповнення полів форми
+    for (const key in formDataFromLS) {
+      if (form.elements[key]) {
+        form.elements[key].value = formDataFromLS[key];
+      }
+    }
+  } catch (err) {
+    console.log("Error parsing localStorage data:", err);
   }
-});
+};
+
+// Виклик функції для заповнення форми при завантаженні сторінки
+document.addEventListener("DOMContentLoaded", fillFormFields);
 
 // 2. **Обробка події input**
 form.addEventListener("input", (event) => {

@@ -4,28 +4,33 @@ body {
     padding: 0;
     background-color: #fff;
     display: flex;
+    color: #333;
+    display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 
 }
 
-.login-form {
+section {
     background-color: #ffffff;
     padding: 24px;
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 8px;
     width: 408px;
-    height: 256px;
+    height: 296px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 15px;
+    gap: 16px;
+}
+h1 {
+    display: none;
 }
 
-/* Стиль для label */
-.login-form label {
+
+.feedback-form {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -36,10 +41,11 @@ body {
     line-height: 1.5;
     letter-spacing: 0.04em;
     color: #2e2f42;
+    font-family: "Montserrat", sans-serif;
 }
 
-/* Стиль для input */
-.login-form input {
+
+ input {
     margin-top: 8px;
     padding: 10px;
     font-size: 14px;
@@ -49,12 +55,12 @@ body {
     transition: border-color 0.3s ease;
 }
 
-.login-form input:focus {
+ input:focus {
     border-color: #007bff;
 }
 
-/* Стиль для кнопки */
-.login-form button {
+
+form button {
     padding: 8px 16px;
     border-radius: 8px;
     font-size: 16px;
@@ -66,11 +72,11 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    width: 86px;
+    width: 95px;
     height: 40px;
     transition: background-color 0.3s ease;
 }
 
-.login-form button:hover {
-    background-color: #0056b3;
+ form button:hover {
+    background-color: #6c8cff;;
 }
